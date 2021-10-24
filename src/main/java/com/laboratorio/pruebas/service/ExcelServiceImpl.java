@@ -72,10 +72,10 @@ public class ExcelServiceImpl implements IExcelService{
 	    	}
 	    	
 		} catch (Exception e) {
-			System.out.println("Algo fallo "+e.getMessage());
+			System.err.println("Algo fallo "+e.getMessage());
 		}
-	    
-		System.out.println("Se guardaron " +alumnos + " Registros");
+//	    
+//		System.out.println("Se guardaron " +alumnos + " Registros");
 		return lista;
 	}
 	
@@ -96,11 +96,6 @@ public class ExcelServiceImpl implements IExcelService{
 			if(!diferencias.isEmpty()) {
 				excelRepository.save(registro);
 			}
-			
-			for (String val:diferencias ) {
-				System.out.print(val);
-			}
-			System.out.println();
 		}else
 		{
 			guardar(registroBean);
@@ -131,7 +126,7 @@ public class ExcelServiceImpl implements IExcelService{
 			cal.setTime(d);
 		} catch (ParseException e) {
 			
-			System.out.println("Error en el metodo getDateFormat" + fechaToConvert);
+			System.err.println("Error en el metodo getDateFormat" + fechaToConvert);
 		}
 		
 		return cal.getTime();
@@ -142,14 +137,14 @@ public class ExcelServiceImpl implements IExcelService{
 	}
 	
 	private void guardar(RegistrosExcelBean registro) {
-		System.out.println("Se guardo el alumno => " + registro.toString()+ "con exito!!");
+//		System.out.println("Se guardo el alumno => " + registro.toString()+ "con exito!!");
 		excelRepository.save(registro);
 	}
 	
 	@Override
 	public RegistrosExcelBean findByNombreAndDate(String nombre, String fecha) {
 		RegistrosExcelBean registro = null;
-		System.out.println("Fecha para hacer la consulta =>"+getDateFormat(getValidateDate(fecha)));
+//		System.out.println("Fecha para hacer la consulta =>"+getDateFormat(getValidateDate(fecha)));
 			registro = excelRepository.findByNombreAndDate(nombre,getDateFormat(getValidateDate(fecha)));
 		return registro;
 	}

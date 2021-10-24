@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +25,12 @@ public class ExcelController {
 	@Autowired
 	private IExcelService excelService;
 	
-	@RequestMapping( value = "/cargarAlumnos", method = {RequestMethod.POST})
+	@PostMapping( value = "/cargarAlumnos")
 	public @ResponseBody List<RegistrosExcel> cargarAluumnos( @RequestParam ("fileInput") MultipartFile file) {
 		return excelService.respuesta(file);
 	}
 	
-	@RequestMapping( value = "/listar/{nombre}/{fecha}", method = {RequestMethod.POST})
+	@PostMapping( value = "/listar/{nombre}/{fecha}")
 	public @ResponseBody RegistrosExcelBean listar(@PathVariable String nombre,@PathVariable String fecha ) {
 		return excelService.findByNombreAndDate(nombre,fecha);
 	}
