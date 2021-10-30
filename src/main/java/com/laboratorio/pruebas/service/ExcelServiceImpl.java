@@ -156,4 +156,9 @@ public class ExcelServiceImpl implements IExcelService{
 		
 	}
 
+	@Override
+	public RegistrosExcelBean findByNombre(String nombre) {
+		return excelRepository.findByNombre(nombre);
+	}
+
 }

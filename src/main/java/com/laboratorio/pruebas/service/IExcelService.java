@@ -14,5 +14,7 @@ public interface IExcelService {
 	public List<RegistrosExcel> respuesta(MultipartFile file);
 	
 	public RegistrosExcelBean findByNombreAndDate(String nombre, String fecha);
+	
+	public RegistrosExcelBean findByNombre(String nombre);
 
 }

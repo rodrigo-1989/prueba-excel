@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,8 @@ public class ExcelController {
 		return excelService.findByNombreAndDate(nombre,fecha);
 	}
 	
-	
+	@GetMapping(value = "/listar/{nombre}")
+	public RegistrosExcelBean listaPorNombre(@PathVariable String nombre) {
+		return excelService.findByNombre(nombre);
+	}
 }
